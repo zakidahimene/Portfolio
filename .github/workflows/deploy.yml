@@ -18,8 +18,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: withastro/action@v3
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      # npm install (not ci) so Linux-only optional packages missing from the Windows lockfile get resolved
+      - run: npm install --no-audit --no-fund
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
 
   deploy:
     needs: build
