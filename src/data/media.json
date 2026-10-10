@@ -1,0 +1,324 @@
+{
+ "entia": {
+  "final-closed": {
+   "src": "/media/entia/final-closed.webp",
+   "sm": "/media/entia/final-closed-sm.webp",
+   "w": 1200,
+   "h": 1600
+  },
+  "final-device": {
+   "src": "/media/entia/final-device.webp",
+   "sm": "/media/entia/final-device-sm.webp",
+   "w": 1200,
+   "h": 1600
+  },
+  "final-cradle": {
+   "src": "/media/entia/final-cradle.webp",
+   "sm": "/media/entia/final-cradle-sm.webp",
+   "w": 1200,
+   "h": 1600
+  },
+  "final-accessories": {
+   "src": "/media/entia/final-accessories.webp",
+   "sm": "/media/entia/final-accessories-sm.webp",
+   "w": 1200,
+   "h": 1600
+  },
+  "old-box": {
+   "src": "/media/entia/old-box.webp",
+   "sm": "/media/entia/old-box-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "layout-sketch": {
+   "src": "/media/entia/layout-sketch.webp",
+   "sm": "/media/entia/layout-sketch-sm.webp",
+   "w": 1600,
+   "h": 900
+  },
+  "old-device": {
+   "src": "/media/entia/old-device.webp",
+   "sm": "/media/entia/old-device-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "old-accessories": {
+   "src": "/media/entia/old-accessories.webp",
+   "sm": "/media/entia/old-accessories-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "proto-insert": {
+   "src": "/media/entia/proto-insert.webp",
+   "sm": "/media/entia/proto-insert-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "proto-accessories": {
+   "src": "/media/entia/proto-accessories.webp",
+   "sm": "/media/entia/proto-accessories-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "proto-foam": {
+   "src": "/media/entia/proto-foam.webp",
+   "sm": "/media/entia/proto-foam-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "proto-device": {
+   "src": "/media/entia/proto-device.webp",
+   "sm": "/media/entia/proto-device-sm.webp",
+   "w": 1500,
+   "h": 2000
+  }
+ },
+ "unibots": {
+  "team": {
+   "src": "/media/unibots/team.webp",
+   "sm": "/media/unibots/team-sm.webp",
+   "w": 2000,
+   "h": 1333
+  },
+  "block-diagram": {
+   "src": "/media/unibots/block-diagram.webp",
+   "sm": "/media/unibots/block-diagram-sm.webp",
+   "w": 738,
+   "h": 389
+  },
+  "wiring-diagram": {
+   "src": "/media/unibots/wiring-diagram.webp",
+   "sm": "/media/unibots/wiring-diagram-sm.webp",
+   "w": 640,
+   "h": 480
+  },
+  "electronics-proto": {
+   "src": "/media/unibots/electronics-proto.webp",
+   "sm": "/media/unibots/electronics-proto-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "regionals-robot": {
+   "src": "/media/unibots/regionals-robot.webp",
+   "sm": "/media/unibots/regionals-robot-sm.webp",
+   "w": 2000,
+   "h": 1500
+  },
+  "nationals-build": {
+   "src": "/media/unibots/nationals-build.webp",
+   "sm": "/media/unibots/nationals-build-sm.webp",
+   "w": 540,
+   "h": 960
+  },
+  "nationals-collector": {
+   "src": "/media/unibots/nationals-collector.webp",
+   "sm": "/media/unibots/nationals-collector-sm.webp",
+   "w": 1125,
+   "h": 2000
+  },
+  "nationals-robot": {
+   "src": "/media/unibots/nationals-robot.webp",
+   "sm": "/media/unibots/nationals-robot-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "nationals-robot-2": {
+   "src": "/media/unibots/nationals-robot-2.webp",
+   "sm": "/media/unibots/nationals-robot-2-sm.webp",
+   "w": 461,
+   "h": 615
+  },
+  "nationals-test": {
+   "src": "/media/unibots/nationals-test.webp",
+   "sm": "/media/unibots/nationals-test-sm.webp",
+   "w": 922,
+   "h": 1229
+  },
+  "arena-1": {
+   "src": "/media/unibots/arena-1.webp",
+   "sm": "/media/unibots/arena-1-sm.webp",
+   "w": 2000,
+   "h": 1333
+  },
+  "arena-2": {
+   "src": "/media/unibots/arena-2.webp",
+   "sm": "/media/unibots/arena-2-sm.webp",
+   "w": 2000,
+   "h": 1333
+  },
+  "perfboard": {
+   "src": "/media/unibots/perfboard.webp",
+   "sm": "/media/unibots/perfboard-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "team-table": {
+   "src": "/media/unibots/team-table.webp",
+   "sm": "/media/unibots/team-table-sm.webp",
+   "w": 2000,
+   "h": 1333
+  }
+ },
+ "robot-arm": {
+  "arm-01": {
+   "src": "/media/robot-arm/arm-01.webp",
+   "sm": "/media/robot-arm/arm-01-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "arm-02": {
+   "src": "/media/robot-arm/arm-02.webp",
+   "sm": "/media/robot-arm/arm-02-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "arm-03": {
+   "src": "/media/robot-arm/arm-03.webp",
+   "sm": "/media/robot-arm/arm-03-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "arm-04": {
+   "src": "/media/robot-arm/arm-04.webp",
+   "sm": "/media/robot-arm/arm-04-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "arm-05": {
+   "src": "/media/robot-arm/arm-05.webp",
+   "sm": "/media/robot-arm/arm-05-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "arm-06": {
+   "src": "/media/robot-arm/arm-06.webp",
+   "sm": "/media/robot-arm/arm-06-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "arm-07": {
+   "src": "/media/robot-arm/arm-07.webp",
+   "sm": "/media/robot-arm/arm-07-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "arm-08": {
+   "src": "/media/robot-arm/arm-08.webp",
+   "sm": "/media/robot-arm/arm-08-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "arm-09": {
+   "src": "/media/robot-arm/arm-09.webp",
+   "sm": "/media/robot-arm/arm-09-sm.webp",
+   "w": 828,
+   "h": 1300
+  }
+ },
+ "hackathon": {
+  "hack-01": {
+   "src": "/media/hackathon/hack-01.webp",
+   "sm": "/media/hackathon/hack-01-sm.webp",
+   "w": 1600,
+   "h": 1067
+  },
+  "hack-02": {
+   "src": "/media/hackathon/hack-02.webp",
+   "sm": "/media/hackathon/hack-02-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "hack-03": {
+   "src": "/media/hackathon/hack-03.webp",
+   "sm": "/media/hackathon/hack-03-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "hack-04": {
+   "src": "/media/hackathon/hack-04.webp",
+   "sm": "/media/hackathon/hack-04-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "hack-05": {
+   "src": "/media/hackathon/hack-05.webp",
+   "sm": "/media/hackathon/hack-05-sm.webp",
+   "w": 853,
+   "h": 1280
+  },
+  "hack-06": {
+   "src": "/media/hackathon/hack-06.webp",
+   "sm": "/media/hackathon/hack-06-sm.webp",
+   "w": 1280,
+   "h": 853
+  },
+  "hack-07": {
+   "src": "/media/hackathon/hack-07.webp",
+   "sm": "/media/hackathon/hack-07-sm.webp",
+   "w": 1280,
+   "h": 853
+  }
+ },
+ "mealmap": {
+  "mm-01": {
+   "src": "/media/mealmap/mm-01.webp",
+   "sm": "/media/mealmap/mm-01-sm.webp",
+   "w": 2000,
+   "h": 1000
+  },
+  "mm-02": {
+   "src": "/media/mealmap/mm-02.webp",
+   "sm": "/media/mealmap/mm-02-sm.webp",
+   "w": 1500,
+   "h": 2000
+  },
+  "mm-03": {
+   "src": "/media/mealmap/mm-03.webp",
+   "sm": "/media/mealmap/mm-03-sm.webp",
+   "w": 1125,
+   "h": 2000
+  },
+  "mm-04": {
+   "src": "/media/mealmap/mm-04.webp",
+   "sm": "/media/mealmap/mm-04-sm.webp",
+   "w": 1506,
+   "h": 2000
+  },
+  "mm-05": {
+   "src": "/media/mealmap/mm-05.webp",
+   "sm": "/media/mealmap/mm-05-sm.webp",
+   "w": 1200,
+   "h": 1600
+  },
+  "mm-06": {
+   "src": "/media/mealmap/mm-06.webp",
+   "sm": "/media/mealmap/mm-06-sm.webp",
+   "w": 2000,
+   "h": 1500
+  },
+  "mm-07": {
+   "src": "/media/mealmap/mm-07.webp",
+   "sm": "/media/mealmap/mm-07-sm.webp",
+   "w": 2000,
+   "h": 1139
+  },
+  "mm-08": {
+   "src": "/media/mealmap/mm-08.webp",
+   "sm": "/media/mealmap/mm-08-sm.webp",
+   "w": 2000,
+   "h": 1638
+  },
+  "mm-09": {
+   "src": "/media/mealmap/mm-09.webp",
+   "sm": "/media/mealmap/mm-09-sm.webp",
+   "w": 2000,
+   "h": 1500
+  },
+  "mm-10": {
+   "src": "/media/mealmap/mm-10.webp",
+   "sm": "/media/mealmap/mm-10-sm.webp",
+   "w": 911,
+   "h": 615
+  }
+ }
+}

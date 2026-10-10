@@ -1,0 +1,125 @@
+---
+import { u } from '../lib/url';
+
+const links = [
+  { href: u('/#work'), label: 'Work' },
+  { href: u('/#about'), label: 'About' },
+  { href: u('/#experience'), label: 'Experience' },
+  { href: u('/#contact'), label: 'Contact' },
+];
+---
+
+<header class="hdr">
+  <div class="frame hdr-row">
+    <a class="logo" href={u('/')} aria-label="Zaki Dahimene, home">ZD<span>.</span></a>
+    <nav class="nav" aria-label="Primary">
+      {links.map((l, i) => (
+        <a href={l.href} class="mono">
+          <span class="n">0{i + 1}</span>
+          {l.label}
+        </a>
+      ))}
+    </nav>
+    <div class="meta mono">
+      <span class="dot" aria-hidden="true"></span>London, UK
+    </div>
+    <a class="ln mono" href="https://www.linkedin.com/in/zaki-dahimene-222b2a2b5/" target="_blank" rel="noopener">
+      LinkedIn ↗
+    </a>
+  </div>
+</header>
+
+<style>
+  .hdr {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10, 23, 48, 0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .hdr-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: stretch;
+    min-height: 60px;
+  }
+  .hdr-row > * {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--gutter);
+  }
+  .hdr-row > * + * {
+    border-left: 1px solid var(--line);
+  }
+  .logo {
+    font-size: 26px;
+    font-weight: 800;
+    font-variation-settings: 'wdth' 120;
+    letter-spacing: -0.03em;
+  }
+  .logo span {
+    color: var(--accent);
+  }
+  .nav {
+    gap: clamp(14px, 2.4vw, 36px);
+  }
+  .nav a {
+    position: relative;
+    padding: 8px 0;
+    color: var(--ink-soft);
+    transition: color 0.2s;
+  }
+  .nav a:hover {
+    color: var(--ink);
+  }
+  .nav .n {
+    color: var(--accent);
+    margin-right: 6px;
+  }
+  .meta {
+    color: var(--ink-mute);
+    gap: 8px;
+  }
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #5ee59b;
+    box-shadow: 0 0 0 3px rgba(94, 229, 155, 0.18);
+  }
+  .ln {
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+  .ln:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 900px) {
+    .hdr-row > .meta {
+      display: none;
+    }
+    .hdr-row {
+      grid-template-columns: auto 1fr auto;
+    }
+  }
+  @media (max-width: 640px) {
+    .nav .n {
+      display: none;
+    }
+    .nav {
+      gap: 16px;
+      justify-content: flex-end;
+    }
+    .nav a:nth-child(3) {
+      display: none;
+    }
+    .ln {
+      display: none !important;
+    }
+    .hdr-row {
+      grid-template-columns: auto 1fr;
+    }
+  }
+</style>

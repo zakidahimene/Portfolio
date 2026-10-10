@@ -1,0 +1,35 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="ftr">
+  <div class="frame ftr-row">
+    <div class="cell mono">© {year} Zaki Dahimene</div>
+    <div class="cell mono">MEng Design Engineering · Imperial College London</div>
+    <a class="cell mono top" href="#main">Back to Top ↑</a>
+  </div>
+</footer>
+
+<style>
+  .ftr-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr auto;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-mute);
+  }
+  .top {
+    color: var(--ink);
+  }
+  .top:hover {
+    color: var(--accent);
+  }
+  @media (max-width: 720px) {
+    .ftr-row {
+      grid-template-columns: 1fr;
+    }
+    .ftr-row .cell + .cell {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+  }
+</style>

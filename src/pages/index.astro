@@ -1,0 +1,898 @@
+---
+import Base from '../layouts/Base.astro';
+import { projects } from '../data/projects';
+import media from '../data/media';
+import { u } from '../lib/url';
+
+const skills = [
+  'PCB Design', 'KiCad', 'ESP32', 'Raspberry Pi', 'C / C++', 'Python', 'PID Control',
+  'Computer Vision', 'CAD', '3D Printing', 'Prototyping', 'User Research', 'Java', 'JavaScript',
+];
+
+// Hero collage: one large tile + four smaller, each linking to its project
+const bySlug = Object.fromEntries(projects.map((p) => [p.slug, p]));
+const collage = [
+  { p: bySlug['entia'], img: media.entia['final-cradle'] },
+  { p: bySlug['unibots'], img: media.unibots['nationals-robot'] },
+  { p: bySlug['robot-arm'], img: media['robot-arm']['arm-01'] },
+  { p: bySlug['mealmap'], img: media.mealmap['mm-01'] },
+  { p: bySlug['hackathon'], img: media.hackathon['hack-01'] },
+];
+
+// Four biggest achievements, from the CV
+const achievements = [
+  { value: '−60%', label: 'Packaging footprint at Entia — my design is now in production' },
+  { value: '3rd / 28', label: 'Unibots regionals, leading the electronics sub-team' },
+  { value: '1st', label: 'Predicted First, MEng Design Engineering at Imperial' },
+  { value: '+3', label: 'Grade boundaries gained by the A-level students I tutor' },
+];
+
+const experience = [
+  {
+    no: '01',
+    role: 'Student Intern',
+    org: 'Entia',
+    place: 'London',
+    when: 'Feb — Apr 2026',
+    points: [
+      'Redesigned the packaging for a medical device, cutting its footprint by 60%',
+      'Final design was chosen for production and has shipped to customers since June 2026',
+    ],
+    link: u('/projects/entia'),
+  },
+  {
+    no: '02',
+    role: 'Lead Robotics Mentor',
+    org: 'Ashbourne College',
+    place: 'London',
+    when: 'Aug 2026 — Now',
+    points: [
+      'Mentor a FIRST Tech Challenge team through designing, building, programming and testing their robot',
+      'Tutor A-level Physics and Computer Science; students improved by up to three grade boundaries',
+    ],
+  },
+  {
+    no: '03',
+    role: 'Intern',
+    org: 'ASMPT',
+    place: 'Weymouth',
+    when: 'Aug — Sep 2025',
+    points: [
+      'Rotated through R&D, module and system testing, and the machine shop at a global maker of PCB printing equipment',
+      'Saw how products move from development through manufacturing, testing and quality control',
+    ],
+  },
+];
+
+const [featured, ...rest] = projects;
+---
+
+<Base>
+  <div class="frame">
+    <!-- HERO -->
+    <section class="row hero-top" aria-label="Introduction">
+      <div class="collage">
+        {collage.map((c, i) => (
+          <a class:list={['ctile', { big: i === 0 }]} href={u(`/projects/${c.p.slug}`)}>
+            <img
+              src={i === 0 ? c.img.src : c.img.sm}
+              alt={c.p.cover.alt}
+              width={c.img.w}
+              height={c.img.h}
+              fetchpriority={i === 0 ? 'high' : 'auto'}
+            />
+            <span class="clabel mono"><b>{c.p.no}</b> {c.p.short}</span>
+          </a>
+        ))}
+      </div>
+      <div class="hero-side">
+        <p class="mono k">Index</p>
+        <ol class="index">
+          {projects.map((p) => (
+            <li>
+              <a href={u(`/projects/${p.slug}`)}>
+                <span class="mono">{p.no}</span>
+                <span class="t">{p.short}</span>
+                <span class="arr" aria-hidden="true">→</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+        <dl class="facts">
+          <div><dt class="mono">Studying</dt><dd>MEng Design Engineering, Imperial College London</dd></div>
+          <div><dt class="mono">Building</dt><dd>Robot Arm · PCB Mini Quadcopter</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="row hero-name" aria-label="Name">
+      <h1 class="wordmark">
+        <span class="wm-line">Zaki</span>
+        <span class="wm-line">Dahimene<i>.</i></span>
+      </h1>
+      <div class="roles">
+        <p>Robotics</p>
+        <p>Product Design</p>
+        <p>Electronics</p>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="row marquee" aria-hidden="true">
+      <div class="track">
+        {[0, 1].map(() => (
+          <span class="mono">
+            {skills.map((s) => (
+              <>
+                {s} <b>/</b>{' '}
+              </>
+            ))}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="row about" id="about">
+      <div class="cell">
+        <h2 class="stitle reveal">
+          <span class="over">THE</span>
+          <span class="big">Engineer<i>.</i></span>
+        </h2>
+      </div>
+      <div class="cell about-body reveal">
+        <p class="lead">
+          I'm a Design Engineering student at Imperial College London who likes building things that move, sense and
+          get shipped.
+        </p>
+        <p>
+          Most of my work is where electronics meets physical product. I lead the electronics for Imperial's Unibots
+          competition robot, I'm building a vision-guided robot arm, and as an intern at Entia I redesigned the
+          packaging for a medical device. That design is now in production.
+        </p>
+        <p>
+          I like to take a project the whole way: sketches, CAD, breadboards, soldered boards, testing with real
+          people, and doing it all again until it works.
+        </p>
+        <div class="about-cta">
+          <a class="btn accent" href="#work">See the Work ↓</a>
+          <a class="btn" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="row stats" aria-label="Key achievements">
+      {achievements.map((a) => (
+        <div class="cell reveal">
+          <b>{a.value}</b>
+          <span class="mono">{a.label}</span>
+        </div>
+      ))}
+    </section>
+
+    <!-- WORK -->
+    <section id="work" aria-labelledby="work-title">
+      <div class="row work-head">
+        <div class="cell">
+          <h2 class="stitle reveal" id="work-title">
+            <span class="over">SELECTED</span>
+            <span class="big">Work<i>.</i></span>
+          </h2>
+        </div>
+        <div class="cell work-note mono">
+          <span>{String(projects.length).padStart(2, '0')} Projects</span>
+          <span>2025 — 2026</span>
+        </div>
+      </div>
+
+      <div class="row work-grid">
+        <a class="tile featured reveal" href={u(`/projects/${featured.slug}`)}>
+          <figure>
+            <img src={featured.cover.src} alt={featured.cover.alt} loading="lazy" width={featured.cover.w} height={featured.cover.h} />
+          </figure>
+          <div class="tile-meta">
+            <span class="mono no">{featured.no}</span>
+            <h3>{featured.short}</h3>
+            <span class="mono kick">{featured.kicker}</span>
+            <span class="stat"><b>{featured.stats[0].value}</b> {featured.stats[0].label}</span>
+            <span class="go mono">View Project →</span>
+          </div>
+        </a>
+        {rest.map((p) => (
+          <a class="tile reveal" href={u(`/projects/${p.slug}`)}>
+            <figure>
+              <img src={p.cover.sm} alt={p.cover.alt} loading="lazy" width={p.cover.w} height={p.cover.h} />
+            </figure>
+            <div class="tile-meta">
+              <span class="mono no">{p.no}</span>
+              <h3>{p.short}</h3>
+              <span class="mono kick">{p.kicker}</span>
+              <span class="go mono">View →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="row wip">
+        <div class="cell mono">In Progress</div>
+        <div class="cell">
+          <b>PCB Mini Quadcopter</b>: a custom drone flight board with flight control, motor control and power
+          distribution, designed in KiCad. I'm refining the SMD layout to get a reliable flight time.
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" aria-labelledby="exp-title">
+      <div class="row">
+        <div class="cell">
+          <h2 class="stitle reveal" id="exp-title">
+            <span class="over">MY</span>
+            <span class="big">Experience<i>.</i></span>
+          </h2>
+        </div>
+      </div>
+      {experience.map((x) => (
+        <div class="row exp reveal">
+          <div class="cell exp-no mono">{x.no}</div>
+          <div class="cell exp-main">
+            <h3>{x.org}</h3>
+            <p class="mono exp-role">{x.role} · {x.place}</p>
+          </div>
+          <div class="cell exp-pts">
+            <ul>{x.points.map((pt) => <li>{pt}</li>)}</ul>
+            {x.link && <a class="mono exp-link" href={x.link}>Case Study →</a>}
+          </div>
+          <div class="cell exp-when mono">{x.when}</div>
+        </div>
+      ))}
+      <div class="row edu">
+        <div class="cell mono">Education</div>
+        <div class="cell">
+          <h3>Imperial College London</h3>
+          <p>MEng Design Engineering · Predicted First · 2025 — 2029</p>
+        </div>
+        <div class="cell">
+          <h3>Ashbourne College</h3>
+          <p>A-levels: Mathematics, Physics, Computer Science · 2023 — 2025</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="row contact" id="contact">
+      <div class="cell">
+        <h2 class="stitle reveal">
+          <span class="over">WANT TO</span>
+          <span class="big">Chat<i>?</i></span>
+        </h2>
+      </div>
+      <div class="cell contact-body reveal">
+        <p>I'm open to internships, collaborations and interesting robotics problems.</p>
+        <a class="email" href="mailto:zaki.dahimene25@imperial.ac.uk">zaki.dahimene25@imperial.ac.uk</a>
+        <div class="about-cta">
+          <a class="btn accent" href="mailto:zaki.dahimene25@imperial.ac.uk">Email Me</a>
+          <a class="btn" href="https://www.linkedin.com/in/zaki-dahimene-222b2a2b5/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  /* ---------- HERO ---------- */
+  .hero-top {
+    grid-template-columns: minmax(0, 2.2fr) minmax(260px, 1fr);
+  }
+  .collage {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border-right: 1px solid var(--line);
+    /* Fill the space left above the name on laptops, never taller than a 16:9 block */
+    min-height: clamp(320px, calc(100svh - 60px - var(--wm-h)), 56vw);
+    --wm-h: calc(var(--wm-size) * 1.75 + 48px);
+  }
+  .ctile {
+    position: relative;
+    overflow: hidden;
+    background: var(--navy-950);
+    min-height: 0;
+  }
+  .ctile.big {
+    grid-row: span 2;
+  }
+  .ctile img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease), filter 0.4s;
+    filter: saturate(0.92);
+  }
+  .ctile:hover img {
+    transform: scale(1.04);
+    filter: saturate(1.05);
+  }
+  .clabel {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    max-width: calc(100% - 20px);
+    background: rgba(6, 15, 34, 0.82);
+    padding: 5px 8px;
+    font-size: 10.5px;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .clabel b {
+    color: var(--accent);
+    font-weight: 500;
+    margin-right: 4px;
+  }
+
+  .hero-side {
+    display: flex;
+    flex-direction: column;
+    padding: var(--gutter);
+    gap: 20px;
+    min-width: 0;
+  }
+  .k {
+    margin: 0;
+    color: var(--ink-mute);
+  }
+  .index {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
+  .index a {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    align-items: center;
+    min-height: 46px;
+    border-bottom: 1px solid var(--line);
+    transition: color 0.2s, padding 0.25s var(--ease);
+  }
+  .index .mono {
+    color: var(--accent);
+  }
+  .index .t {
+    font-weight: 600;
+    font-size: 17px;
+  }
+  .index .arr {
+    opacity: 0.35;
+    transition: opacity 0.2s, transform 0.25s var(--ease);
+  }
+  .index a:hover {
+    padding-left: 8px;
+  }
+  .index a:hover .arr {
+    opacity: 1;
+    transform: translateX(-4px);
+    color: var(--accent);
+  }
+  .facts {
+    margin: auto 0 0;
+    display: grid;
+    gap: 14px;
+  }
+  .facts dt {
+    color: var(--ink-mute);
+    margin-bottom: 2px;
+  }
+  .facts dd {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  /* The name is sized from the viewport width so it always fits beside the roles column */
+  :root {
+    --wm-size: clamp(40px, calc((min(100vw, 1600px) - 340px) / 6.5), 200px);
+  }
+  .hero-name {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+  .wordmark {
+    margin: 0;
+    padding: clamp(12px, 2vw, 28px) var(--gutter) clamp(10px, 1.6vw, 22px);
+    font-weight: 800;
+    font-variation-settings: 'wdth' 125;
+    font-size: var(--wm-size);
+    line-height: 0.82;
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+  }
+  .wm-line {
+    display: block;
+  }
+  .wordmark i {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .roles {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--gutter);
+    border-left: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  .roles p {
+    margin: 0;
+    font-size: clamp(17px, 1.6vw, 24px);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+  .roles p::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    margin-right: 10px;
+    vertical-align: 0.15em;
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee {
+    overflow: hidden;
+    background: var(--navy-950);
+    padding: 14px 0;
+  }
+  .track {
+    display: flex;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+  }
+  .track span {
+    padding-right: 0.5em;
+    white-space: nowrap;
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+  .track b {
+    color: var(--accent);
+    font-weight: 400;
+    margin: 0 0.6em;
+  }
+  @keyframes scroll {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .about-body {
+    max-width: 680px;
+    color: var(--ink-soft);
+  }
+  .about-body .lead {
+    color: var(--ink);
+    font-size: clamp(21px, 2vw, 30px);
+    line-height: 1.3;
+    font-weight: 500;
+    margin-top: 0;
+  }
+  .about-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .stats .cell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .stats b {
+    font-size: clamp(34px, 3.4vw, 54px);
+    font-weight: 800;
+    font-variation-settings: 'wdth' 115;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .stats .mono {
+    color: var(--ink-mute);
+    font-size: 11px;
+    line-height: 1.5;
+    max-width: 30ch;
+  }
+
+  /* ---------- WORK ---------- */
+  .work-head {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+  .work-note {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--ink-mute);
+    text-align: right;
+  }
+  .work-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .tile {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--line);
+    min-width: 0;
+  }
+  .tile:nth-child(even) {
+    border-right: 1px solid var(--line);
+  }
+  .work-grid > .tile:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+  .tile figure {
+    margin: 0;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--navy-950);
+  }
+  .tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease), filter 0.4s;
+    filter: saturate(0.9);
+  }
+  .tile:hover img {
+    transform: scale(1.04);
+    filter: saturate(1.05);
+  }
+  .tile-meta {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: baseline;
+    column-gap: 14px;
+    row-gap: 2px;
+    padding: 18px var(--gutter) 22px;
+    border-top: 1px solid var(--line);
+  }
+  .tile-meta .no {
+    color: var(--accent);
+    grid-row: span 2;
+  }
+  .tile-meta h3 {
+    margin: 0;
+    font-size: clamp(21px, 2vw, 30px);
+    font-weight: 700;
+    font-variation-settings: 'wdth' 110;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .tile-meta .kick {
+    grid-column: 2;
+    color: var(--ink-mute);
+    font-size: 11px;
+  }
+  .tile-meta .go {
+    grid-column: 3;
+    grid-row: 1;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    transition: color 0.2s, transform 0.25s var(--ease);
+  }
+  .tile:hover .go {
+    color: var(--accent);
+    transform: translateX(4px);
+  }
+  .tile.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    border-right: 0;
+  }
+  .tile.featured figure {
+    aspect-ratio: 16 / 9;
+  }
+  .tile.featured .tile-meta {
+    border-top: 0;
+    border-left: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: var(--gutter);
+  }
+  .tile.featured h3 {
+    font-size: clamp(30px, 3.4vw, 56px);
+    line-height: 0.98;
+  }
+  .tile.featured .stat {
+    margin-top: auto;
+    color: var(--ink-soft);
+  }
+  .tile.featured .stat b {
+    display: block;
+    font-size: clamp(44px, 4.8vw, 80px);
+    color: var(--ink);
+    font-weight: 800;
+    font-variation-settings: 'wdth' 120;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .wip {
+    grid-template-columns: 200px minmax(0, 1fr);
+    color: var(--ink-soft);
+  }
+  .wip .mono {
+    color: var(--accent);
+  }
+  .wip b {
+    color: var(--ink);
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp {
+    grid-template-columns: 80px minmax(0, 1.1fr) minmax(0, 2fr) 170px;
+  }
+  .exp-no {
+    color: var(--accent);
+  }
+  .exp-main h3 {
+    margin: 0;
+    font-size: clamp(26px, 2.8vw, 44px);
+    font-weight: 800;
+    font-variation-settings: 'wdth' 116;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .exp-role {
+    color: var(--ink-mute);
+    margin: 10px 0 0;
+  }
+  .exp-pts ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--ink-soft);
+  }
+  .exp-pts li + li {
+    margin-top: 6px;
+  }
+  .exp-pts li::marker {
+    color: var(--accent);
+  }
+  .exp-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 0;
+    color: var(--ink);
+  }
+  .exp-link:hover {
+    color: var(--accent);
+  }
+  .exp-when {
+    color: var(--ink-mute);
+    text-align: right;
+  }
+  .edu {
+    grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1fr);
+    background: var(--navy-850);
+  }
+  .edu .mono {
+    color: var(--accent);
+  }
+  .edu h3 {
+    margin: 0 0 4px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .edu p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 15px;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    background: var(--navy-950);
+  }
+  .contact-body p {
+    margin-top: 0;
+    color: var(--ink-soft);
+  }
+  .email {
+    display: inline-block;
+    max-width: 100%;
+    font-size: clamp(18px, 2.3vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 4px;
+    overflow-wrap: anywhere;
+    transition: color 0.2s;
+  }
+  .email:hover {
+    color: var(--accent);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  /* Short laptop screens: keep the name visible in the first view */
+  @media (max-height: 820px) and (min-width: 901px) {
+    .facts {
+      display: none;
+    }
+    .index a {
+      min-height: 40px;
+    }
+    .hero-side {
+      gap: 14px;
+    }
+  }
+
+  /* Small laptops / tablets landscape */
+  @media (max-width: 1200px) {
+    .stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .stats .cell:nth-child(3) {
+      border-left: 0;
+    }
+    .stats .cell:nth-child(n + 3) {
+      border-top: 1px solid var(--line);
+    }
+    .exp {
+      grid-template-columns: 60px minmax(0, 1fr) minmax(0, 1.6fr);
+    }
+    .exp-when {
+      grid-column: 2 / -1;
+      text-align: left;
+      border-left: 0 !important;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+  }
+
+  /* Tablet portrait and phones in landscape: stack the hero */
+  @media (max-width: 900px) {
+    :root {
+      --wm-size: clamp(38px, calc((100vw - 56px) / 6.6), 150px);
+    }
+    .hero-top,
+    .about,
+    .contact,
+    .hero-name {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .collage {
+      min-height: 0;
+      aspect-ratio: 4 / 3;
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-side {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      column-gap: var(--gutter);
+    }
+    .hero-side .k {
+      grid-column: 1 / -1;
+    }
+    .facts {
+      margin: 0;
+      align-content: start;
+    }
+    .roles {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 4px 22px;
+      white-space: normal;
+    }
+    .roles p {
+      white-space: nowrap;
+    }
+    .about .cell + .cell,
+    .contact .cell + .cell {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+    .tile.featured {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .tile.featured .tile-meta {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+    .tile.featured .stat {
+      margin-top: 8px;
+    }
+  }
+
+  /* Phones */
+  @media (max-width: 640px) {
+    .collage {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr));
+      aspect-ratio: 3 / 4;
+    }
+    .ctile.big {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+    .hero-side {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .facts {
+      margin-top: 4px;
+    }
+    .stats .mono {
+      font-size: 10.5px;
+    }
+    .work-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .tile:nth-child(even) {
+      border-right: 0;
+    }
+    .work-grid > .tile:nth-last-child(2) {
+      border-bottom: 1px solid var(--line);
+    }
+    .wip,
+    .edu {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .wip .cell + .cell,
+    .edu .cell + .cell {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+    .exp {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .exp .cell + .cell {
+      border-left: 0;
+    }
+    .exp-no {
+      padding-bottom: 0;
+    }
+    .exp-main,
+    .exp-pts {
+      padding-top: 8px;
+    }
+    .exp-when {
+      grid-column: auto;
+    }
+    .work-head {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .work-note {
+      display: none;
+    }
+  }
+  @media (max-width: 400px) {
+    .stats {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .stats .cell + .cell {
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+  }
+</style>
