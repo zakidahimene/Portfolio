@@ -6,7 +6,7 @@ Astro static site. Navy, editorial grid design.
 
 ```bash
 npm install
-npm run dev        # http://localhost:4321/portfolio/
+npm run dev        # http://localhost:4321/Portfolio/
 npm run build      # outputs static site to dist/
 ```
 
@@ -23,8 +23,8 @@ Videos play muted and loop only the time ranges in `video.segments`
 and show controls instead of autoplaying when the viewer prefers reduced motion.
 
 ## Deploy
-Hosted on GitHub Pages at https://zakidahimene.github.io/portfolio/.
+Hosted on GitHub Pages at https://zakidahimene.github.io/Portfolio/.
 Every push to `main` builds and deploys automatically (`.github/workflows/deploy.yml`).
 
-Link to pages and files with the `u()` helper (`src/lib/url.ts`) so paths include the `/portfolio` base.
+Link to pages and files with the `u()` helper (`src/lib/url.ts`) so paths include the `/Portfolio` base.
 If you move to a custom domain, remove `base` from `astro.config.mjs` and update `site`.
