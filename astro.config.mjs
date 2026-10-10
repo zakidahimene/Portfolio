@@ -1,8 +1,7 @@
 import { defineConfig } from 'astro/config';
 
-// Hosted on GitHub Pages at https://zakidahimene.github.io/Portfolio/
+// Hosted on GitHub Pages with a custom domain: https://zakidahimene.com
 export default defineConfig({
-  site: 'https://zakidahimene.github.io',
-  base: '/Portfolio',
+  site: 'https://zakidahimene.com',
   devToolbar: { enabled: false },
 });
